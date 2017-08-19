@@ -1,10 +1,10 @@
-#board {
-	text-align: center;
-}
-
 ul {
 	list-style: none;
 	padding: 0;
+}
+
+#board {
+	text-align: center;
 }
 
 .card-placeholder {
@@ -14,7 +14,25 @@ ul {
 .card {
 	background-color: #ededed;
 	border: 1px solid #d3d1d1;
+	width: 100px;
+}
+
+.column-card-list {
+	min-height: 300px;
+}
+
+.column {
+	display: inline-block;
+	float: left;
+	padding: 35px 70px;
+}
+
+.create-column {
+	display: block;
 	margin-left: 50%;
 	transform: translate(-50%, 0);
-	width: 200px;
+}
+
+.column-container {
+	display: inline-block;
 }

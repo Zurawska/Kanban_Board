@@ -66,11 +66,11 @@ $(function() {
 
             return $card;
         }
+    }
 
-        Card.prototype = {
-            removeCard: function() {
-        	       this.$element.remove();
-            }
+    Card.prototype = {
+        removeCard: function() {
+    	    this.$element.remove();
         }
     }
 
