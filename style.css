@@ -1,0 +1,20 @@
+#board {
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+.card-placeholder {
+	background: #ccc;
+}
+
+.card {
+	background-color: #ededed;
+	border: 1px solid #d3d1d1;
+	margin-left: 50%;
+	transform: translate(-50%, 0);
+	width: 200px;
+}
