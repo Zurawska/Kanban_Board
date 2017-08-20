@@ -64,6 +64,8 @@ p {
 	border-radius: 3px;
 	color: white;
 	box-shadow: 0px 5px 10px #565554;
+	text-transform: uppercase;
+	font-size: 12px;
 }
 
 .column-container {
@@ -83,19 +85,22 @@ p {
 }
 
 .add-card {
-	height: 30px;
+	height: 35px;
 	border-right: 0;
 	background-color: #03455b;
 	color: #fff;
 	border-radius: 3px 0 0 3px;
 	border-width: 1px;
+	text-transform: uppercase;
+	font-size: 10px;
 }
 
 .btn-delete {
-	height: 30px;
+	height: 35px;
 	border-left: 0;
 	background-color: #03455b;
 	color: #fff;
 	border-radius: 0 3px 3px 0;
 	border-width: 1px;
+	font-size: 12px;
 }
