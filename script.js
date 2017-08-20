@@ -21,6 +21,18 @@ $(function() {
             var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
             var $columnDelete = $('<button>').addClass('btn-delete').html("<i class='fa fa-trash-o' aria-hidden='true'></i>");
 
+            function addHover(button) {
+                button.mouseenter(function(){
+                    $(this).animate({backgroundColor: '#14333d'}, 'fast');
+                });
+                button.mouseleave(function(){
+                    $(this).animate({backgroundColor: '#03455b'}, 'fast');
+                });
+            }
+
+            addHover($columnAddCard);
+            addHover($columnDelete);
+
             $columnDelete.click(function() {
                 self.removeColumn();
                 });
@@ -88,14 +100,17 @@ $(function() {
             connectWith: '.column-card-list',
             placeholder: 'card-placeholder'
         }).disableSelection();
-      }
+    }
 
-    $('.create-column')
-    .click(function(){
+    $('.create-column').click(function(){
         var name = prompt('Enter a column name');
         var column = new Column(name);
-            board.addColumn(column);
-        });
+        board.addColumn(column);
+    }).mouseenter(function(){
+        $(this).animate({backgroundColor: '#14333d'}, 'fast');
+    }).mouseleave(function(){
+        $(this).animate({backgroundColor: '#03455b'}, 'fast');
+    });
 
         // TWORZENIE KOLUMN
     var todoColumn = new Column('To do');
@@ -114,5 +129,4 @@ $(function() {
     // DODAWANIE KART DO KOLUMN
     todoColumn.addCard(card1);
     doingColumn.addCard(card2);
-
 })
