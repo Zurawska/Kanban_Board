@@ -1,16 +1,26 @@
 var board = {
   name: 'Kanban Board',
-  addColumn: function(column) {
+  createColumn: function(column) {
     this.$element.append(column.$element);
     initSortable();
   },
   $element: $('#board .column-container')
 };
 
-$('.create-column').click(function() {
-  var name = prompt('Enter a column name');
-  var column = new Column(name);
-  board.addColumn(column);
+$('.create-column')
+    .click(function() {
+        var columnName = prompt('Enter a column name');
+        $.ajax({
+    		url: baseUrl + '/column',
+    		method: 'POST',
+    		data: {
+            	name: columnName
+    		},
+    		success: function(response){
+    			var column = new Column(response.id, columnName);
+    			board.createColumn(column);
+          	}
+        });
 }).mouseenter(function() {
   $(this).animate({ backgroundColor: '#14333d' }, 'fast');
 }).mouseleave(function() {

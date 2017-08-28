@@ -1,7 +1,7 @@
-function Column(name) {
+function Column(id, name) {
   var self = this;
-  this.id = randomString();
-  this.name = name;
+  this.id = id;
+  this.name = name || 'No name given';
   this.$element = createColumn();
 
   function createColumn() {
@@ -24,11 +24,24 @@ function Column(name) {
     addHover($columnDelete);
 
     $columnDelete.click(function() {
-      self.removeColumn();
+      self.deleteColumn();
     });
 
-    $columnAddCard.click(function() {
-      self.addCard(new Card(prompt("Enter the name of the card")));
+    $columnAddCard.click(function(event) {
+	  var cardName = prompt("Enter the name of the card");
+	  event.preventDefault();
+      $.ajax({
+        url: baseUrl + '/card',
+        method: 'POST',
+        data: {
+        name: cardName,
+        bootcamp_kanban_column_id: self.id
+        },
+        success: function(response) {
+            var card = new Card(response.id, cardName);
+            self.createCard(card);
+        }
+      });
     });
 
     $column.append($columnTitle)
@@ -40,10 +53,17 @@ function Column(name) {
 }
 
 Column.prototype = {
-  addCard: function(card) {
+  createCard: function(card) {
     this.$element.children('ul').append(card.$element);
   },
-  removeColumn: function() {
-    this.$element.remove();
-  }
+  deleteColumn: function() {
+    var self = this;
+    $.ajax({
+      url: baseUrl + '/column/' + self.id,
+      method: 'DELETE',
+      success: function(response){
+        self.$element.remove();
+      }
+    });
+ }
 };
